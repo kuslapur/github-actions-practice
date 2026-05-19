@@ -10,7 +10,7 @@ jobs:
       - name: Print environment variable
         run: echo "The value of MY_VARIABLE is: $MY_VARIABLE"
         env:
-          MY_VARIABLE: Hello, World!
+          MY_VARIABLE: "Hello, World!"
 
       - name: Print another environment variable
         run: |
