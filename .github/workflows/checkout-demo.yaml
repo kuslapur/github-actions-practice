@@ -1,0 +1,14 @@
+name: checkout demo
+
+on: push
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+	steps:
+	  - name: Checkout code
+		uses: actions/checkout@v3
+	  - name: List files
+		run: ls -la
+	  - name: Show current directory
+		run: pwd
