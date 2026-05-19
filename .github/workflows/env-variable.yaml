@@ -1,0 +1,19 @@
+name: Variable
+
+on: push
+
+jobs:
+  variable:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print environment variable
+        run: echo "The value of MY_VARIABLE is: $MY_VARIABLE"
+        env:
+          MY_VARIABLE: Hello, World!
+
+      - name: Print another environment variable
+        run: |
+          echo $GITHUB_WORKSPACE
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
