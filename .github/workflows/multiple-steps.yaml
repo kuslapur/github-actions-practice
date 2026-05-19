@@ -1,0 +1,16 @@
+name: multiple-steps
+
+on: push
+
+jobs:
+  commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1
+        run: echo "Install"
+
+      - name: Step 2
+        run: echo "Build"
+
+      - name: Step 3
+        run: echo "Deploy"
