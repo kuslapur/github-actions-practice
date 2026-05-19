@@ -10,3 +10,12 @@ jobs:
     steps:
       - name: Print Message
         run: echo "Hello GitHub Actions"
+       
+      - name: Show Linux Info
+        run: uname -a
+
+      - name: Show Disk Space
+        run: df -h
+
+      - name: Show Memory
+        run: free -h
