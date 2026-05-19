@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      run: hostname
-      run: whoami
-      run: uptime
+      - run: hostname
+      - run: whoami
+      - run: uptime
