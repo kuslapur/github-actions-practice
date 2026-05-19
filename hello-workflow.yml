@@ -1,0 +1,16 @@
+name: Hello workflow
+on:
+  push:
+
+jobs:
+  Hello-job:
+    runs-on: ubuntu-latest
+	steps:
+	  - name: Hello step
+		run: echo "Hello, world!"
+	  
+	  - name: date step
+	    run: data
+	  
+	  - name: print current directory
+		run: pwd
