@@ -1,0 +1,13 @@
+name: System Info Workflow
+
+on:
+  push:
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+
+    steps:
+      run: hostname
+      run: whoami
+      run: uptime
