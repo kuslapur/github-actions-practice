@@ -1,0 +1,14 @@
+name: Variable
+
+on: push
+
+jobs:
+  variable:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print another environment variable
+        run: |
+          echo $GITHUB_WORKSPACE
+          echo $GITHUB_SHA
+          echo $GITHUB_REF

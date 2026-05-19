@@ -1,0 +1,15 @@
+name: Linux Commands
+
+on: push
+
+jobs:
+  commands:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run commands
+        run: |
+          pwd
+          ls -la
+          whoami
+          date
