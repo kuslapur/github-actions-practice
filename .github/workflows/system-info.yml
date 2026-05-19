@@ -1,13 +1,15 @@
-name: System Info Workflow
+name: Linux Commands
 
-on:
-  push:
+on: push
 
 jobs:
-  info:
+  commands:
     runs-on: ubuntu-latest
 
     steps:
-      - run: hostname
-      - run: whoami
-      - run: uptime
+      - name: Run commands
+        run: |
+          pwd
+          ls -la
+          whoami
+          date
