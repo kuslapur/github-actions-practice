@@ -1,8 +1,9 @@
 name: print env variable
 
-on: push:
-  branches:
-    - Day02
+on:
+  push:
+    branches:
+      - Day02
 
 env:
   APP_NAME: myapp
