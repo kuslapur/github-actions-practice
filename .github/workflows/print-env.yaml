@@ -1,6 +1,10 @@
 name: print env variable
 
 on:
+  push:
+    branches:
+      - Day02
+
   workflow_dispatch:
 
 env:
