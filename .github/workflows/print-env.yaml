@@ -1,7 +1,8 @@
 name: print env variable
 
-on:
-  workflow_dispatch:
+on: push:
+  branches:
+    - Day02
 
 env:
   APP_NAME: myapp
