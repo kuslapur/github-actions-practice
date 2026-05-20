@@ -1,0 +1,32 @@
+name: multiple-job-workflow
+
+on:
+ push:
+	branches: 
+	  - Day02
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+	steps:
+	  - name: Checkout code
+		uses: actions/checkout@v2
+
+	  - name: Build the project
+		run: echo "Building the project..."
+
+  test:
+	runs-on: ubuntu-latest
+	steps:
+	  - name: Test the project
+		needs: build
+	  - name: Run tests
+		run: echo "Running tests..."
+
+  deploy:
+  	runs-on: ubuntu-latest
+	steps:
+	  - name: Deploy the project
+		needs: test
+	  - name: Deploy
+		run: echo "Deploying the project..."
