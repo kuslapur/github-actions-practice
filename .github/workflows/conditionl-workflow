@@ -1,0 +1,31 @@
+name: conditional workflow
+
+on:
+  push:
+    branches:
+      - main
+      - Day03
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: build step
+        run: echo "Building application"
+
+  deploy-dev:
+    if: github.ref == 'refs/heads/Day03'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: deploy step
+        run: echo "Deploying application to development environment"
+
+  deploy-prod:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: deploy step
+        run: echo "Deploying application to production environment"
