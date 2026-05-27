@@ -3,7 +3,7 @@ name: Matrix Python Testing
 on:
   push:
     branches:
-      - main
+      - Day05
 
 jobs:
 
