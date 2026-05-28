@@ -1,14 +1,6 @@
-import datetime
-import platform
+def calculate_salary(hours, rate):
+    return hours * rate
 
-print("===================================")
-print("   Welcome to Python CI Demo")
-print("===================================")
-
-current_time = datetime.datetime.now()
-
-print(f"Current Time : {current_time}")
-print(f"Python Version : {platform.python_version()}")
-print(f"Operating System : {platform.system()}")
-
-print("Application executed successfully!")
+if __name__ == "__main__":
+    salary = calculate_salary(8, 500)
+    print(f"Daily Salary: {salary}")
