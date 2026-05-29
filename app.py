@@ -1,14 +1,14 @@
-"""
-Simple salary calculation module.
-"""
+from flask import Flask
 
-def calculate_salary(hours, rate):
-    """
-    Calculate employee salary.
-    """
-    return hours * rate
+app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "Hello from Flask App running in Kubernetes!"
 
-if __name__ == "__main__":
-    SALARY = calculate_salary(8, 500)
-    print(f"Daily Salary: {SALARY}")
+@app.route('/health')
+def health():
+    return {"status": "UP"}
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
