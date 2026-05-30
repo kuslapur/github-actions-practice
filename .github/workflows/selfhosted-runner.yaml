@@ -1,0 +1,23 @@
+name: CI-CD Pipeline
+
+on:
+  push:
+    branches:
+      - Day07
+
+jobs:
+  build-test-push:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Verify Runner
+        run: |
+          hostname
+          whoami
+          kubectl version --client
+          docker --version
+
+   
