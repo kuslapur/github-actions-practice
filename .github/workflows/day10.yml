@@ -1,0 +1,101 @@
+name: Day10 Multi Job Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  APP_NAME: GitHubActionsPractice
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+
+    steps:
+
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Generate Version
+        id: version
+        run: |
+          echo "version=1.0.${GITHUB_RUN_NUMBER}" >> $GITHUB_OUTPUT
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build Project
+        run: |
+          mkdir build
+          cp app.py build/
+          cp requirements.txt build/
+
+      - name: Show Build Folder
+        run: ls -R build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-build
+          path: build/
+
+  test:
+
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: python-build
+          path: build
+
+      - name: Verify Artifact
+        run: |
+          ls -R build
+
+      - name: Run Tests
+        run: |
+          pytest tests/
+
+  deploy:
+
+    needs:
+      - build
+      - test
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Deployment
+        run: |
+          echo "Deploying Version -> ${{ needs.build.outputs.version }}"
+          echo "Deployment Successful"
