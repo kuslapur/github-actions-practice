@@ -3,7 +3,7 @@ name: Day10 Multi Job Pipeline
 on:
   push:
     branches:
-      - main
+      - Day10
 
 env:
   APP_NAME: GitHubActionsPractice
